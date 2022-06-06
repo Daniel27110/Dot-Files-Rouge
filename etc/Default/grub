@@ -1,0 +1,5 @@
+# GRUB boot loader configuration
+
+GRUB_TIMEOUT=0.001
+GRUB_TIMEOUT_STYLE="countdown"
+GRUB_DISABLE_OS_PROBER=true
