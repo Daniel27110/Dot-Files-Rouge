@@ -45,47 +45,25 @@ end
 
 -- Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+beautiful.init("/home/daniel/.config/awesome/theme.lua")
 
--- This is used later as the default terminal and editor to run.
+-- Default terminal 
 terminal = "alacritty"
-editor = "code"
-editor_cmd = terminal .. " -e " .. editor
+rofi = "rofi -drun-display-format {name} -show drun"
 
 -- Default modkey.
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
+    awful.layout.suit.tile
 }
 
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
--- Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
+beautiful.useless_gap = 5
+beautiful.gap_single_client = true
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
@@ -139,212 +117,206 @@ local function set_wallpaper(s)
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
+
 screen.connect_signal("property::geometry", set_wallpaper)
+
+-- Topbar and widgets
+
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "一", "二", "三", "四", "五"}, s, awful.layout.layouts[1])
 
-    -- Create a promptbox for each screen
-    s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox:buttons(gears.table.join(
-        awful.button({}, 1, function() awful.layout.inc(1) end),
-        awful.button({}, 3, function() awful.layout.inc(-1) end),
-        awful.button({}, 4, function() awful.layout.inc(1) end),
-        awful.button({}, 5, function() awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
-    }
-
-    -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
-    }
-
-    -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
-
-    -- Add widgets to the wibox
-    s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            mylauncher,
-            s.mytaglist,
-            s.mypromptbox,
+        buttons = taglist_buttons,
+        style = {
+            shape = function(cr, width, height)
+              gears.shape.squircle(cr, width, height, 1.3, 0)
+            end,
+          },
+        widget_template = {
+        {
+            {
+            id = "text_role",
+            widget = wibox.widget.textbox,
+            },
+            left = 7,
+            right = 7,
+            widget = wibox.container.margin,
         },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
+        id = "background_role",
+        widget = wibox.container.background,
+        create_callback = function(self, c3, index, objects) --luacheck: no unused args
+            self:connect_signal("mouse::enter", function()
+            if #c3:clients() > 0 then
+                awesome.emit_signal("bling::tag_preview::update", c3)
+                awesome.emit_signal("bling::tag_preview::visibility", s, true)
+            end
+            end)
+            self:connect_signal("mouse::leave", function()
+            awesome.emit_signal("bling::tag_preview::visibility", s, false)
+    
+            if self.has_backup then
+                self.bg = self.backup
+            end
+            end)
+        end,
+        }       
+    }
+    local time = wibox.widget {
+        bg = beautiful.bg_normal,
+        shape = function(cr, width, height)
+          gears.shape.rounded_rect(cr, width, height, 9)
+        end,
+        widget = wibox.container.background,
+        {
+          widget = wibox.widget.textclock,
         },
     }
+
+    local battery = wibox.widget {
+        bg = beautiful.bg_normal,
+        fg = beautiful.fg_bat,
+        shape = function(cr, width, height)
+            gears.shape.rounded_rect(cr, width, height, 9)
+        end,
+        widget = wibox.container.background,
+        {
+            {
+            widget = awful.widget.watch("status bat", 30),
+            },
+            left = 7,
+            right = 7,
+            top = 5,
+            bottom = 5,
+            widget = wibox.container.margin,
+        },
+    }
+
+
+    awful.popup({
+        bg = beautiful.none,
+        screen = s,
+        placement = function(c)
+          (awful.placement.top + awful.placement.maximize_horizontally)(
+            c,
+            { margins = { top = 10, left = 10, right = 10 } }
+          )
+        end,
+        shape = gears.shape.rect,
+        widget = {
+            layout = wibox.layout.align.horizontal,
+            forced_height = 20,
+            { -- Left widgets
+                layout = wibox.layout.fixed.horizontal,
+                -- mytaglist,
+                {
+                    {
+                      {
+                        widget = s.mytaglist,
+                      },
+                      widget = wibox.container.margin,
+                      margins = 5,
+                    },
+                    widget = wibox.container.background,
+                    bg = beautiful.bg_normal,
+                    shape = function(cr, width, height)
+                      gears.shape.rounded_rect(cr, width, height, 9)
+                    end,
+                }
+                
+            },
+            nil,
+            { -- Right widgets
+                layout = wibox.layout.fixed.horizontal,
+                spacing = 10,
+                -- wibox.widget.systray(),
+                -- wibox.widget.textclock(),
+                {
+                    bg = beautiful.bg_normal,
+                    shape = function(cr, width, height)
+                      gears.shape.rounded_rect(cr, width, height, 9)
+                    end,
+                    widget = wibox.container.background,
+                    {
+                        {
+                          widget = wibox.widget.systray(),
+                        },
+                        widget = wibox.container.margin,
+                        margins = 5,
+                      },
+                },
+                {
+                    bg = beautiful.bg_normal,
+                    shape = function(cr, width, height)
+                      gears.shape.rounded_rect(cr, width, height, 9)
+                    end,
+                    widget = wibox.container.background,
+                    {
+                        {
+                          widget = wibox.widget.textclock(),
+                        },
+                        widget = wibox.container.margin,
+                        margins = 5,
+                      },
+                }
+            },
+        },
+    }):struts { top = 30 }
+
 end)
 
 
--- Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({}, 4, awful.tag.viewnext),
-    awful.button({}, 5, awful.tag.viewprev)
-))
-
 
 -- Key bindings
+
 globalkeys = gears.table.join(
-    awful.key({ modkey }, "s", function() awful.util.spawn("rofi -drun-display-format {name} -show drun") end),
-    awful.key({ modkey }, "Left", awful.tag.viewprev),
-    awful.key({ modkey }, "Right", awful.tag.viewnext),
 
-    awful.key({ modkey, }, "j",
-        function()
-            awful.client.focus.byidx(1)
-        end,
-        { description = "focus next by index", group = "client" }
-    ),
-    awful.key({ modkey, }, "k",
-        function()
-            awful.client.focus.byidx(-1)
-        end,
-        { description = "focus previous by index", group = "client" }
-    ),
-
-    -- Layout manipulation
-    awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
-        { description = "swap with next client by index", group = "client" }),
-    awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(-1) end,
-        { description = "swap with previous client by index", group = "client" }),
-    awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end,
-        { description = "focus the next screen", group = "screen" }),
-    awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end,
-        { description = "focus the previous screen", group = "screen" }),
-    awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
-        { description = "jump to urgent client", group = "client" }),
-    awful.key({ modkey, }, "Tab",
-        function()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        { description = "go back", group = "client" }),
-
-    -- Standard program
-    awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
+    awful.key({ modkey }, "Return", function() awful.spawn(terminal) end,
         { description = "open a terminal", group = "launcher" }),
+
+    awful.key({ modkey }, "s", function() awful.spawn(rofi) end,
+        { description = "open rofi", group = "launcher" }),
+
     awful.key({ modkey, "Control" }, "r", awesome.restart,
         { description = "reload awesome", group = "awesome" }),
-    awful.key({ modkey, "Shift" }, "q", awesome.quit,
-        { description = "quit awesome", group = "awesome" }),
 
-    awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
-        { description = "increase master width factor", group = "layout" }),
-    awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
-        { description = "decrease master width factor", group = "layout" }),
-    awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
-        { description = "increase the number of master clients", group = "layout" }),
-    awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
-        { description = "decrease the number of master clients", group = "layout" }),
-    awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol(1, nil, true) end,
-        { description = "increase the number of columns", group = "layout" }),
-    awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1, nil, true) end,
-        { description = "decrease the number of columns", group = "layout" }),
-    awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
-        { description = "select next", group = "layout" }),
-    awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
-        { description = "select previous", group = "layout" }),
+    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("xbacklight -dec 15") end,
+        { description = "decrease brightness", group = "launcher" }),
 
-    awful.key({ modkey, "Control" }, "n",
-        function()
-            local c = awful.client.restore()
-            -- Focus restored client
-            if c then
-                c:emit_signal(
-                    "request::activate", "key.unminimize", { raise = true }
-                )
-            end
-        end,
-        { description = "restore minimized", group = "client" }),
+    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn("xbacklight -inc 15") end,
+        { description = "increase brightness", group = "launcher" }),
 
-    -- Prompt
-    awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
-        { description = "run prompt", group = "launcher" }),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.spawn("amixer -q sset Master 3%-") end,
+        { description = "decrease volume", group = "launcher" }),
 
-    awful.key({ modkey }, "x",
-        function()
-            awful.prompt.run {
-                prompt       = "Run Lua code: ",
-                textbox      = awful.screen.focused().mypromptbox.widget,
-                exe_callback = awful.util.eval,
-                history_path = awful.util.get_cache_dir() .. "/history_eval"
-            }
-        end,
-        { description = "lua execute prompt", group = "awesome" }),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-        { description = "show the menubar", group = "launcher" })
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn("amixer -q sset Master 3%+") end,
+        { description = "increase volume", group = "launcher" }),
+
+    awful.key({}, "Print", function() awful.spawn("xfce4-screenshooter") end,
+        { description = "screenshot menu", group = "launcher" })
 )
 
 clientkeys = gears.table.join(
-    awful.key({ modkey, }, "f",
-        function(c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        { description = "toggle fullscreen", group = "client" }),
-    awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
+
+    awful.key({ modkey }, "w", function(c) c:kill() end,
         { description = "close", group = "client" }),
-    awful.key({ modkey, "Control" }, "space", awful.client.floating.toggle,
+
+    awful.key({ modkey }, "a", awful.client.floating.toggle,
         { description = "toggle floating", group = "client" }),
-    awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
-        { description = "move to master", group = "client" }),
-    awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
-        { description = "move to screen", group = "client" }),
-    awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
-        { description = "toggle keep on top", group = "client" }),
-    awful.key({ modkey, }, "n",
-        function(c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end,
-        { description = "minimize", group = "client" }),
-    awful.key({ modkey, }, "m",
-        function(c)
-            c.maximized = not c.maximized
-            c:raise()
-        end,
-        { description = "(un)maximize", group = "client" }),
-    awful.key({ modkey, "Control" }, "m",
-        function(c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
-        end,
-        { description = "(un)maximize vertically", group = "client" }),
-    awful.key({ modkey, "Shift" }, "m",
-        function(c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end,
-        { description = "(un)maximize horizontally", group = "client" })
+
+    awful.key({ modkey }, "Tab", function(c) c:move_to_screen() end,
+        { description = "move to other screen", group = "client" })
+
 )
 
 -- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
@@ -407,10 +379,12 @@ clientbuttons = gears.table.join(
 )
 
 -- Set keys
-root.keys(globalkeys)
--- }}}
 
--- {{{ Rules
+root.keys(globalkeys)
+
+
+-- Rules
+
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -422,12 +396,19 @@ awful.rules.rules = {
             keys = clientkeys,
             buttons = clientbuttons,
             screen = awful.screen.preferred,
-            placement = awful.placement.no_overlap + awful.placement.no_offscreen
+            placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+            maximized_vertical   = false,
+            maximized_horizontal = false,
+            floating = false,
+            maximized = false
+
         }
     },
 
     -- Floating clients.
     { rule_any = {
+        type = {"utility", "notification", "toolbar", "splash", "dialog"},
+        is_fixed = {true},
         instance = {
             "DTA", -- Firefox addon DownThemAll.
             "copyq", -- Includes session name in class.
@@ -436,6 +417,8 @@ awful.rules.rules = {
         class = {
             "Arandr",
             "Blueman-manager",
+            "Xfce4-screenshooter",
+            "Xfce4-clipman",
             "Gpick",
             "Kruler",
             "MessageWin", -- kalarm.
@@ -455,20 +438,15 @@ awful.rules.rules = {
             "ConfigManager", -- Thunderbird's about:config.
             "pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
         }
-    }, properties = { floating = true } },
+    }, properties = { floating = true, placement = awful.placement.centered } },
 
-    -- Add titlebars to normal clients and dialogs
-    { rule_any = { type = { "normal", "dialog" }
-    }, properties = { titlebars_enabled = true }
-    },
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+
 }
--- }}}
 
--- {{{ Signals
+
+-- Signals
+
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
     -- Set the windows at the slave,
@@ -483,63 +461,36 @@ client.connect_signal("manage", function(c)
     end
 end)
 
--- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-    -- buttons for the titlebar
-    local buttons = gears.table.join(
-        awful.button({}, 1, function()
-            c:emit_signal("request::activate", "titlebar", { raise = true })
-            awful.mouse.client.move(c)
-        end),
-        awful.button({}, 3, function()
-            c:emit_signal("request::activate", "titlebar", { raise = true })
-            awful.mouse.client.resize(c)
-        end)
-    )
 
-    awful.titlebar(c):setup {
-        { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
-            buttons = buttons,
-            layout  = wibox.layout.flex.horizontal
-        },
-        { -- Right
-            awful.titlebar.widget.floatingbutton(c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton(c),
-            awful.titlebar.widget.ontopbutton(c),
-            awful.titlebar.widget.closebutton(c),
-            layout = wibox.layout.fixed.horizontal()
-        },
-        layout = wibox.layout.align.horizontal
-    }
+-- Signal function to keep floating windoes allways on top
+client.connect_signal("property::floating", function(c)
+    if c.floating then
+        c.ontop = true
+    else
+        c.ontop = false
+    end
 end)
 
+
+
 -- Enable sloppy focus, so that focus follows mouse.
+
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", { raise = false })
 end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
 
 
 -- Autostart applications
-awful.spawn.with_shell("feh --bg-fill ~/.config/qtile/Aenami2.jpg")
+
 awful.spawn.with_shell("picom &")
 awful.spawn.with_shell("/usr/bin/gnome-keyring-daemon --start --components=pkcs11 &")
 awful.spawn.with_shell("nm-applet &")
 awful.spawn.with_shell("xfce4-clipman &")
 awful.spawn.with_shell("xfce4-power-manager &")
+awful.spawn.with_shell("prime-offload &")
+awful.spawn.with_shell("optimus-manager-qt &")
 awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
--- awful.spawn.with_shell("redshift -l 4.60971:-74.08175 &")
--- awful.spawn.with_shell("optimus-manager-qt &")
+
