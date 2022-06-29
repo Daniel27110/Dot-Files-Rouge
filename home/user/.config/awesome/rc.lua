@@ -54,9 +54,12 @@ rofi = "rofi -drun-display-format {name} -show drun"
 -- Default modkey.
 modkey = "Mod4"
 
+local screenRotation = "normal"
+
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile
+    awful.layout.suit.tile,
+    awful.layout.suit.tile.top
 }
 
 
@@ -169,35 +172,6 @@ awful.screen.connect_for_each_screen(function(s)
         end,
         }       
     }
-    local time = wibox.widget {
-        bg = beautiful.bg_normal,
-        shape = function(cr, width, height)
-          gears.shape.rounded_rect(cr, width, height, 9)
-        end,
-        widget = wibox.container.background,
-        {
-          widget = wibox.widget.textclock,
-        },
-    }
-
-    local battery = wibox.widget {
-        bg = beautiful.bg_normal,
-        fg = beautiful.fg_bat,
-        shape = function(cr, width, height)
-            gears.shape.rounded_rect(cr, width, height, 9)
-        end,
-        widget = wibox.container.background,
-        {
-            {
-            widget = awful.widget.watch("status bat", 30),
-            },
-            left = 7,
-            right = 7,
-            top = 5,
-            bottom = 5,
-            widget = wibox.container.margin,
-        },
-    }
 
 
     awful.popup({
@@ -222,12 +196,13 @@ awful.screen.connect_for_each_screen(function(s)
                         widget = s.mytaglist,
                       },
                       widget = wibox.container.margin,
-                      margins = 5,
+                      left = 8,
+                      right = 8
                     },
                     widget = wibox.container.background,
                     bg = beautiful.bg_normal,
                     shape = function(cr, width, height)
-                      gears.shape.rounded_rect(cr, width, height, 9)
+                      gears.shape.rounded_rect(cr, width, height, 180)
                     end,
                 }
                 
@@ -241,7 +216,7 @@ awful.screen.connect_for_each_screen(function(s)
                 {
                     bg = beautiful.bg_normal,
                     shape = function(cr, width, height)
-                      gears.shape.rounded_rect(cr, width, height, 9)
+                      gears.shape.rounded_rect(cr, width, height, 180)
                     end,
                     widget = wibox.container.background,
                     {
@@ -249,21 +224,38 @@ awful.screen.connect_for_each_screen(function(s)
                           widget = wibox.widget.systray(),
                         },
                         widget = wibox.container.margin,
-                        margins = 5,
+                        left = 8,
+                        right = 8
                       },
                 },
                 {
                     bg = beautiful.bg_normal,
                     shape = function(cr, width, height)
-                      gears.shape.rounded_rect(cr, width, height, 9)
+                      gears.shape.rounded_rect(cr, width, height, 180)
                     end,
                     widget = wibox.container.background,
                     {
                         {
-                          widget = wibox.widget.textclock(),
+                          widget = awful.widget.watch("dash -c \"echo $(cat /sys/class/power_supply/BAT0/capacity) パーセント\"", 60),
                         },
                         widget = wibox.container.margin,
-                        margins = 5,
+                        left = 8,
+                        right = 8
+                      },
+                },
+                {
+                    bg = beautiful.bg_normal,
+                    shape = function(cr, width, height)
+                      gears.shape.rounded_rect(cr, width, height, 180)
+                    end,
+                    widget = wibox.container.background,
+                    {
+                        {
+                          widget = wibox.widget.textclock("%-d日 %-m月 %-I時 %-M分"),
+                        },
+                        widget = wibox.container.margin,
+                        left = 8,
+                        right = 8
                       },
                 }
             },
@@ -490,7 +482,7 @@ awful.spawn.with_shell("/usr/bin/gnome-keyring-daemon --start --components=pkcs1
 awful.spawn.with_shell("nm-applet &")
 awful.spawn.with_shell("xfce4-clipman &")
 awful.spawn.with_shell("xfce4-power-manager &")
-awful.spawn.with_shell("prime-offload &")
-awful.spawn.with_shell("optimus-manager-qt &")
 awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
+awful.spawn.with_shell("xinput disable \"ELAN2514:00 04F3:2CED\"")
+
 
