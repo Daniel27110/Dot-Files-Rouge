@@ -17,9 +17,9 @@ Details:
 
 <strong>○ Terminal Font:</strong> [Fira Code](https://github.com/tonsky/FiraCode)
 
-<strong>○ Browser:</strong> Firefox, theme fount [here](https://addons.mozilla.org/en-US/firefox/addon/new-rouge-theme/)
+<strong>○ Browser:</strong> [Firefox](https://www.mozilla.org/en-US/firefox/new/), theme fount [here](https://addons.mozilla.org/en-US/firefox/addon/new-rouge-theme/)
 
-<strong>○ Code Editor:</strong> [VS Code](https://code.visualstudio.com/)
+<strong>○ Code Editor:</strong> [VS Code](https://code.visualstudio.com/), theme fount [here](https://github.com/josefaidt/rouge-theme)
 
 <strong>○ Document Viewer:</strong> [Zathura](https://pwmt.org/projects/zathura/)
 
@@ -29,7 +29,6 @@ Details:
 
 Screenshots:
 
-![wallpaper 3](https://user-images.githubusercontent.com/98629277/181143973-7d9bc8b1-0103-4fa7-98e6-e814ea7a7e8d.png)
 
-
-![wallpaper 2](https://user-images.githubusercontent.com/98629277/181143167-c333c7b6-7d09-492b-9ac3-623d30151529.png)
+![Screenshot_2022-07-27_12-20-24](https://user-images.githubusercontent.com/98629277/181357944-fe528070-7d1e-4fce-beb6-c17b7eb61d1e.png)
+![Screenshot_2022-07-27_12-10-55](https://user-images.githubusercontent.com/98629277/181357965-1035a73c-53e0-4118-b38a-06b5188eae95.png)
