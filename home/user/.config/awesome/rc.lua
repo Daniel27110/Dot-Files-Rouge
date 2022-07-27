@@ -196,8 +196,8 @@ awful.screen.connect_for_each_screen(function(s)
                         widget = s.mytaglist,
                       },
                       widget = wibox.container.margin,
-                      left = 8,
-                      right = 8
+                      left = 10,
+                      right = 10
                     },
                     widget = wibox.container.background,
                     bg = beautiful.bg_normal,
@@ -224,8 +224,8 @@ awful.screen.connect_for_each_screen(function(s)
                           widget = wibox.widget.systray(),
                         },
                         widget = wibox.container.margin,
-                        left = 8,
-                        right = 8
+                        left = 10,
+                        right = 10
                       },
                 },
                 {
@@ -236,11 +236,11 @@ awful.screen.connect_for_each_screen(function(s)
                     widget = wibox.container.background,
                     {
                         {
-                          widget = awful.widget.watch("dash -c \"echo $(cat /sys/class/power_supply/BAT0/capacity) パーセント\"", 60),
+                          widget = awful.widget.watch("dash -c \"echo $(cat /sys/class/power_supply/BAT1/capacity) パーセント\"", 60),
                         },
                         widget = wibox.container.margin,
-                        left = 8,
-                        right = 8
+                        left = 10,
+                        right = 10
                       },
                 },
                 {
@@ -254,8 +254,8 @@ awful.screen.connect_for_each_screen(function(s)
                           widget = wibox.widget.textclock("%-d日 %-m月 %-I時 %-M分"),
                         },
                         widget = wibox.container.margin,
-                        left = 8,
-                        right = 8
+                        left = 10,
+                        right = 10
                       },
                 }
             },
@@ -483,6 +483,7 @@ awful.spawn.with_shell("nm-applet &")
 awful.spawn.with_shell("xfce4-clipman &")
 awful.spawn.with_shell("xfce4-power-manager &")
 awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
-awful.spawn.with_shell("xinput disable \"ELAN2514:00 04F3:2CED\"")
+awful.spawn.with_shell("prime-offload &")
+awful.spawn.with_shell("optimus-manager-qt &")
 
 

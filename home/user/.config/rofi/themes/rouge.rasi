@@ -1,0 +1,74 @@
+configuration {
+  font: "Source Code Pro 13";
+
+  drun {
+    display-name: "⮞";
+  }
+
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+
+  bg: #151627;
+  bg-alt: #151627;
+  fg: #a2a3aa;
+  fg-alt: #a2a3aa;
+
+  background-color: @bg;
+  text-color: @fg;
+  handle-color: #a2a3aa;
+}
+
+window {
+  transparency: "real";
+  width: 30%;
+}
+
+mainbox {
+  children: [inputbar, listview];
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+entry {
+  padding: 12px 0;
+}
+
+prompt {
+  padding: 12px;
+}
+
+listview {
+  lines: 6;
+  scrollbar:    true;
+}
+
+element {
+  children: [element-text];
+}
+
+element-text {
+  padding: 12px;
+  text-color: @fg-alt;
+}
+
+element-text selected {
+  text-color: #c6797e	;
+}
+
+#scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-width: 8px ;
+    padding:      5;
+}
