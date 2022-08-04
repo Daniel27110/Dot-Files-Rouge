@@ -23,7 +23,6 @@ Details:
 
 <strong>○ Document Viewer:</strong> [Zathura](https://pwmt.org/projects/zathura/)
 
-<strong>○ Audio Visualizer:</strong> [Cava](https://github.com/karlstav/cava)
     
 ⠀
 
