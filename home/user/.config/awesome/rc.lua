@@ -48,7 +48,7 @@ end
 beautiful.init("/home/daniel/.config/awesome/theme.lua")
 
 -- Default terminal 
-terminal = "alacritty"
+terminal = "kitty"
 rofi = "rofi -drun-display-format {name} -show drun"
 
 -- Default modkey.
