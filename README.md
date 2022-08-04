@@ -2,7 +2,7 @@ Still a WIP!
 
 This config was inspired by the beautiful Rouge Theme for VSCode by [Josef](https://github.com/josefaidt), in particular his extra cozy theme known as rogue 2.
 
-This rice aims to produce a practical work environment that will hopefully complement the calm and comfortable feel of the original Rouge theme. 
+I aims to produce a practical work environment that will hopefully complement the calm and comfortable feel of the original Rouge theme. 
 
 ⠀
 
@@ -13,7 +13,7 @@ Details:
 
 <strong>○ WM:</strong> [AwesomeWM](https://awesomewm.org/)
 
-<strong>○ Terminal Emulator:</strong> [Alacritty](https://github.com/alacritty/alacritty)
+<strong>○ Terminal Emulator:</strong> [Kitty](https://github.com/kovidgoyal/kitty)
 
 <strong>○ Terminal Font:</strong> [Fira Code](https://github.com/tonsky/FiraCode)
 
@@ -23,6 +23,7 @@ Details:
 
 <strong>○ Document Viewer:</strong> [Zathura](https://pwmt.org/projects/zathura/)
 
+<strong>○ Audio Visualizer:</strong> [Cava](https://github.com/karlstav/cava)
     
 ⠀
 
@@ -30,5 +31,7 @@ Details:
 Screenshots:
 
 
-![Screenshot_2022-07-27_12-20-24](https://user-images.githubusercontent.com/98629277/181357944-fe528070-7d1e-4fce-beb6-c17b7eb61d1e.png)
-![Screenshot_2022-07-27_12-10-55](https://user-images.githubusercontent.com/98629277/181357965-1035a73c-53e0-4118-b38a-06b5188eae95.png)
+
+![1](https://user-images.githubusercontent.com/98629277/182753387-f59144e7-0bab-4deb-a4d8-0a6deab29d8a.png)
+![2](https://user-images.githubusercontent.com/98629277/182753394-4434ee7e-227a-41a4-8b68-7e19b1eae4e4.png)
+![3](https://user-images.githubusercontent.com/98629277/182753399-6a92d04a-d050-4d0d-927e-60a7c9a3429b.png)
