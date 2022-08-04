@@ -2,7 +2,7 @@ Still a WIP!
 
 This config was inspired by the beautiful Rouge Theme for VSCode by [Josef](https://github.com/josefaidt), in particular his extra cozy theme known as rogue 2.
 
-I aims to produce a practical work environment that will hopefully complement the calm and comfortable feel of the original Rouge theme. 
+I aim to produce a practical work environment that will hopefully complement the calm and comfortable feel of the original Rouge theme. 
 
 ⠀
 
@@ -34,4 +34,4 @@ Screenshots:
 
 ![1](https://user-images.githubusercontent.com/98629277/182753387-f59144e7-0bab-4deb-a4d8-0a6deab29d8a.png)
 ![2](https://user-images.githubusercontent.com/98629277/182753394-4434ee7e-227a-41a4-8b68-7e19b1eae4e4.png)
-![3](https://user-images.githubusercontent.com/98629277/182753399-6a92d04a-d050-4d0d-927e-60a7c9a3429b.png)
+![6](https://user-images.githubusercontent.com/98629277/182755203-60f07d55-18bf-429f-8396-73fa56cb05f9.png)
