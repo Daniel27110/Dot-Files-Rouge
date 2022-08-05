@@ -9,7 +9,7 @@ I aim to produce a practical work environment that will hopefully complement the
 
 Details:
 
-<strong>○ Wallpaper:</strong> お仕事絶募集中 (Goyain) on pixiv, the original post isn't avaialbe anymore, find it [here](https://danbooru.donmai.us/posts/3944527?q=goyain+exusiai_%28arknights%29+) instead
+<strong>○ Wallpaper:</strong> [ブルアカ新刊予約中](https://www.pixiv.net/en/users/5213983/artworks) (Goyain) on pixiv, the original post isn't avaialbe anymore, find it [here](https://danbooru.donmai.us/posts/3944527?q=goyain+exusiai_%28arknights%29+) instead
 
 <strong>○ WM:</strong> [AwesomeWM](https://awesomewm.org/)
 
