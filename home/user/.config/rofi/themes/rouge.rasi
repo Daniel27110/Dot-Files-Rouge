@@ -1,12 +1,12 @@
 configuration {
-  font: "Source Code Pro 13";
+  font: "Cantarell Regular 13";
 
   drun {
     display-name: "⮞";
   }
 
   timeout {
-    delay: 10;
+    delay: 0;
     action: "kb-cancel";
   }
 }
@@ -28,8 +28,10 @@ configuration {
 }
 
 window {
+
   transparency: "real";
-  width: 30%;
+  width: 36%;
+  x-offset: -25%;
 }
 
 mainbox {
