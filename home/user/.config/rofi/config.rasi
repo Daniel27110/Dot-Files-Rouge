@@ -1,8 +1,0 @@
-configuration {
-    modi: "drun";
-    filebrowser {
-        directories-first: true;
-        sorting-method:    "name";
-    }
-}
-@theme "rouge"
