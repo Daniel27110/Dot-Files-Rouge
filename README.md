@@ -9,9 +9,11 @@ I aim to produce a practical work environment that will hopefully complement the
 
 Details:
 
-<strong>○ Wallpaper:</strong> [ブルアカ新刊予約中](https://www.pixiv.net/en/users/5213983/artworks) (Goyain) on pixiv, the original post isn't avaialbe anymore, find it [here](https://danbooru.donmai.us/posts/3944527?q=goyain+exusiai_%28arknights%29+) instead
+<strong>○ Wallpaper:</strong> [here](https://github.com/Daniel27110/Dot-Files/blob/master/Pictures/br.jpg)
 
-<strong>○ WM:</strong> [AwesomeWM](https://awesomewm.org/)
+<strong>○ icons:</strong> [Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+
+<strong>○ WM:</strong> [KDE](https://kde.org/)
 
 <strong>○ Terminal Emulator:</strong> [Kitty](https://github.com/kovidgoyal/kitty)
 
@@ -30,5 +32,5 @@ Details:
 Screenshots:
 
 
-![7](https://user-images.githubusercontent.com/98629277/182756830-ffd65b7c-8c26-434a-91f5-6484fb8e423e.png)
-![8](https://user-images.githubusercontent.com/98629277/182757540-c96ed034-1f58-41f8-8d12-5e4c5c5ce8a1.png)
+![1](https://user-images.githubusercontent.com/98629277/211129714-c7f55ef6-a5dd-4f18-b9c4-de6d1937607f.png)
+![2](https://user-images.githubusercontent.com/98629277/211129716-e5e93518-7fad-4d4f-9e25-56b32b577e5c.png)
