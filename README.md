@@ -9,7 +9,7 @@ I aim to produce a practical work environment that will hopefully complement the
 
 Details:
 
-<strong>○ Wallpaper:</strong> [here](https://github.com/Daniel27110/Dot-Files/blob/master/Pictures/br.jpg)
+<strong>○ Wallpaper:</strong> [Here](https://github.com/Daniel27110/Dot-Files/blob/master/Pictures/br.jpg)
 
 <strong>○ icons:</strong> [Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 
@@ -33,5 +33,5 @@ Screenshots:
 
 
 ![1](https://user-images.githubusercontent.com/98629277/211129714-c7f55ef6-a5dd-4f18-b9c4-de6d1937607f.png)
-![2](https://user-images.githubusercontent.com/98629277/211129716-e5e93518-7fad-4d4f-9e25-56b32b577e5c.png)
+![2](https://user-images.githubusercontent.com/98629277/211175999-9390c88c-a15a-4eb4-9846-a892f6c83b83.png)
 ![3](https://user-images.githubusercontent.com/98629277/211175675-de1300cc-6074-44f8-884d-09231386e170.png)
