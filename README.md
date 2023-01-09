@@ -38,7 +38,8 @@ I aim to produce a practical work environment that will hopefully complement the
 ### Screenshots:
 
 
-![1](https://user-images.githubusercontent.com/98629277/211129714-c7f55ef6-a5dd-4f18-b9c4-de6d1937607f.png)
-![2](https://user-images.githubusercontent.com/98629277/211175999-9390c88c-a15a-4eb4-9846-a892f6c83b83.png)
-![3](https://user-images.githubusercontent.com/98629277/211222869-bf2a4ff9-490a-49a0-9df9-12e1767dcf6e.png)
+![1](https://user-images.githubusercontent.com/98629277/211227379-1bec6792-20a9-4247-a00b-73329b76f375.png)
+![2](https://user-images.githubusercontent.com/98629277/211227382-57d107c1-f677-4b78-b895-73ae802d737e.png)
+![3](https://user-images.githubusercontent.com/98629277/211227388-8f526b7d-3388-4f10-b432-2733e67656de.png)
+
 
