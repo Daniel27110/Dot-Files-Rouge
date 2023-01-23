@@ -2,11 +2,13 @@
 
 # Pre requisites:
 
-# 1. clone this repo: git clone https://github.com/Daniel27110/Dot-Files
+# 1. Clone this repo: git clone https://github.com/Daniel27110/Dot-Files
 
-# 2. update your system: paru
+# 2. Install the Paru AUR helper: https://github.com/Morganamilo/paru
 
-# 3. setup your username here:
+# 3. Update your system
+
+# 4. Setup your username here:
 
 username="daniel"
 
