@@ -1,6 +1,6 @@
-# v1.0.0 release of Rogue Theme for the KDE WM
+# Rogue theme v1.0.0 for KDE
 
-This config was inspired by the beautiful Rouge Theme for VSCode by [Josef](https://github.com/josefaidt), in particular his extra cozy theme known as rogue 2.
+This desktop config was inspired by the beautiful Rouge Theme for VSCode by [Josef](https://github.com/josefaidt), in particular his extra cozy theme known as rogue 2.
 
 I aim to produce a practical work environment that will hopefully complement the calm and comfortable feel of the original Rouge theme. 
 
