@@ -1,6 +1,6 @@
 # Rogue theme v1.0.0 for KDE
 
-This desktop config was inspired by the beautiful Rouge Theme for VSCode by [Josef](https://github.com/josefaidt), in particular his extra cozy theme known as rogue 2.
+This desktop config was inspired by the beautiful Rouge Theme for VSCode by [Josef](https://github.com/josefaidt), in particular his extra cozy theme known as Rogue 2.
 
 I aim to produce a practical work environment that will hopefully complement the calm and comfortable feel of the original Rouge theme. 
 
@@ -8,8 +8,8 @@ I aim to produce a practical work environment that will hopefully complement the
 
 ### New Features:
 
-- A light and easy to install KDE customization using the [Konsave](https://github.com/Prayag2/konsave) package
-- An easy to use installation script
+- A light and easy to install KDE customization using the [Konsave](https://github.com/Prayag2/konsave) package.
+- An easy to use installation script.
 
 ⠀
 
@@ -19,7 +19,7 @@ I aim to produce a practical work environment that will hopefully complement the
 
 - <strong>Icons:</strong> [Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 
-- <strong>WM:</strong> [KDE](https://kde.org/)
+- <strong>Desktop Enviroment:</strong> [KDE](https://kde.org/)
 
 - <strong>Terminal Emulator:</strong> [Kitty](https://github.com/kovidgoyal/kitty)
 
