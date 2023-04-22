@@ -40,6 +40,7 @@ I aim to produce a practical work environment that will hopefully complement the
 
 ![1](https://user-images.githubusercontent.com/98629277/211227379-1bec6792-20a9-4247-a00b-73329b76f375.png)
 ![2](https://user-images.githubusercontent.com/98629277/211227382-57d107c1-f677-4b78-b895-73ae802d737e.png)
-![3](https://user-images.githubusercontent.com/98629277/211227388-8f526b7d-3388-4f10-b432-2733e67656de.png)
+![3](https://user-images.githubusercontent.com/98629277/233811238-9fbef451-42c7-477f-8f78-1177934a7e49.png)
+
 
 
