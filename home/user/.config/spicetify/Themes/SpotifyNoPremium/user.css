@@ -647,3 +647,14 @@ input {
   border-radius: 10px !important;
   background-color: var(--spice-sec-player) !important;
 }
+
+/* removes the nav bar with the home, search, library, and song image */
+.Root__nav-bar {
+  /* sets the size of the nav bar to 0 */
+  width: 0px !important;
+  /* sets the minimum size of the nav bar to 0 */
+  min-width: 0px !important;
+  /* sets the gap between the nav bar and the main content to 200px */
+  margin-right: 50px !important;
+
+}
