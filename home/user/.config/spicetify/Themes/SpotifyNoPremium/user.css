@@ -183,6 +183,7 @@ button {
 
 /* Improve Sidebar Buttons */
 
+
 .main-likedSongsButton-likedSongsIcon {
   background: var(--spice-text);
 }
@@ -241,6 +242,8 @@ button {
 }
 
 /* sidebar edits */
+
+
 .main-navBar-navBarLinkActive,
 .main-navBar-navBarLinkActive:focus,
 .logo {
