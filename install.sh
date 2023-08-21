@@ -2,13 +2,13 @@
 
 # Pre requisites:
 
-# 1. Clone this repo: git clone https://github.com/Daniel27110/Dot-Files
+# 1. Clone this repo: git clone https://github.com/Daniel27110/Dot-Files 
 
-# 2. Install the Paru AUR helper: https://github.com/Morganamilo/paru
+# Note: It won't work if you download the zip file, you need to clone the repo
 
-# 3. Update your system
+# 2. Update your system
 
-# 4. Setup your username here:
+# 3. Setup your username from your base directory
 
 username="daniel"
 
@@ -16,7 +16,7 @@ cd
 
 # 0.1. install Java
 
-paru -S java-environment-common java-runtime-common --noconfirm
+yay -S java-environment-common java-runtime-common --noconfirm
 
 # 1. install VSCode
 
@@ -28,13 +28,9 @@ makepkg -si --noconfirm
 
 cd
 
-# 2. Install kitty terminal emulator
-
-paru -S kitty --noconfirm
-
 # 3. install konsave and apply theme
 
-paru -S konsave --noconfirm
+yay -S konsave --noconfirm
 
 konsave -i /home/${username}/Dot-Files/rouge.knsv
 
@@ -42,21 +38,21 @@ konsave -a rouge
 
 # 4. install papirus icon theme
 
-paru -S papirus-icon-theme --noconfirm
+yay -S papirus-icon-theme --noconfirm
 
-paru -S papirus-folders --noconfirm
+yay -S papirus-folders --noconfirm
 
 papirus-folders -C bluegrey --theme ePapirus-Dark
 
 # 5. install fira code font
 
-paru -S ttf-fira-code --noconfirm
+yay -S ttf-fira-code --noconfirm
 
 # 6. install zathura pdf viewer
 
-paru -S zathura --noconfirm
+yay -S zathura --noconfirm
 
-paru -S zathura-pdf-poppler --noconfirm
+yay -S zathura-pdf-poppler --noconfirm
 
 # 7. move wallpaper to images
 
@@ -65,12 +61,6 @@ cd /home/${username}/Dot-Files/Pictures
 mv -f br.jpg /home/${username}/Pictures
 
 # 8. move relevant files to .config
-
-# kitty
-
-cd /home/${username}/Dot-Files/home/user/.config/kitty
-
-mv -f kitty.conf /home/${username}/.config/kitty
 
 # neofetch
 
@@ -86,9 +76,9 @@ mv -f zathura /home/${username}/.config/
 
 # 9. install spotify
 
-paru -S spotify --noconfirm
+yay -S spotify --noconfirm
 
-paru -S spotify-adblock-git --noconfirm
+yay -S spotify-adblock-git --noconfirm
 
 mv -f /home/${username}/Dot-Files/.local/share/applications/spotify-adblock.desktop /home/${username}/.local/share/applications
 
@@ -96,7 +86,7 @@ cd
 
 # 9.1 open spotify once before installing spicetify
 
-echo Before proceeding, open spotify once and login, close it and type done once you're ready
+echo Before proceeding, open spotify once and login, close it and type done once you are ready
 
 while true; do
 
@@ -109,7 +99,7 @@ done
 
 # 10. install spicetify 
 
-paru -S spicetify-cli --noconfirm
+yay -S spicetify-cli --noconfirm
 
 sudo chmod a+wr /opt/spotify
 
