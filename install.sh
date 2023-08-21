@@ -74,7 +74,7 @@ yay -S spotify --noconfirm
 
 yay -S spotify-adblock-git --noconfirm
 
-mv -f /home/${username}/Dot-Files/.local/share/applications/spotify-adblock.desktop /home/${username}/.local/share/applications
+mv -f /home/${username}/Dot-Files/.local/share/applications/spotify-adblock.desktop /home/${username}/.local/share/applications/
 
 cd
 
