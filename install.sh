@@ -62,12 +62,6 @@ mv -f br.jpg /home/${username}/Pictures
 
 # 8. move relevant files to .config
 
-# neofetch
-
-cd /home/${username}/Dot-Files/home/user/.config/
-
-mv -f neofetch /home/${username}/.config/
-
 # zathura
 
 cd /home/${username}/Dot-Files/home/user/.config/
@@ -137,7 +131,9 @@ mv -f user.css /home/${username}/.config/spicetify/Themes/SpotifyNoPremium/
 
 spicetify apply
 
+# DONE  
 
+echo Done! Enjoy your new system! Please reboot your system to apply all changes
 
 
 
