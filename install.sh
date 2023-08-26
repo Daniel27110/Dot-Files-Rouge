@@ -1,32 +1,34 @@
 #!/bin/bash
 
-# Pre requisites:
+# How to use:
 
-# 1. Clone this repo: git clone https://github.com/Daniel27110/Dot-Files 
+# 1. Clone this repo: git clone https://github.com/Daniel27110/Dot-Files-Rouge 
 
-# Note: It won't work if you download the zip file, you need to clone the repo
+# 2. cd into the repo: cd Dot-Files-Rouge
 
-# 2. Update your system
+# 3. Make the script executable: chmod +x install.sh
 
-# 3. Setup your username from your base directory
+# 4. Run the script: ./install.sh
 
-username="daniel"
+# 5. Enjoy your new system!
+
+username=$(whoami)
 
 cd
 
-# 0.1. install Java
+# Install Java
 
 yay -S java-environment-common java-runtime-common --noconfirm
 
-# 0.2 install google chrome
+# Install google chrome
 
 yay -S google-chrome --noconfirm
 
-# 0.3 install github-desktop-bin
+# Install github-desktop-bin
 
 yay -S github-desktop-bin --noconfirm
 
-# 1. install VSCode
+# Install VSCode
 
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
 
@@ -36,15 +38,17 @@ makepkg -si --noconfirm
 
 cd
 
-# 3. install konsave and apply theme
+# Install Konsave and apply theme
 
 yay -S konsave --noconfirm
 
-konsave -i /home/${username}/Dot-Files/rouge.knsv
+cd /home/${username}/Dot-Files-Rouge/
+
+konsave -i /home/${username}/Dot-Files-Rouge/rouge.knsv
 
 konsave -a rouge
 
-# 4. install papirus icon theme
+# Install papirus icon theme
 
 yay -S papirus-icon-theme --noconfirm
 
@@ -52,41 +56,37 @@ yay -S papirus-folders --noconfirm
 
 papirus-folders -C bluegrey --theme ePapirus-Dark
 
-# 5. install fira code font
+# Install fira code font
 
 yay -S ttf-fira-code --noconfirm
 
-# 6. install zathura pdf viewer
+# Install zathura pdf viewer and apply theme
 
 yay -S zathura --noconfirm
 
 yay -S zathura-pdf-poppler --noconfirm
 
-# 7. move wallpaper to images
-
-cd /home/${username}/Dot-Files/Pictures
-
-mv -f br.jpg /home/${username}/Pictures
-
-# 8. move relevant files to .config
-
-# zathura
-
-cd /home/${username}/Dot-Files/home/user/.config/
+cd /home/${username}/Dot-Files-Rouge/home/user/.config/
 
 mv -f zathura /home/${username}/.config/
 
-# 9. install spotify
+# Move wallpaper to images
+
+cd /home/${username}/Dot-Files-Rouge/Pictures
+
+mv -f br.jpg /home/${username}/Pictures
+
+# Install Spotify
 
 yay -S spotify --noconfirm
 
 yay -S spotify-adblock-git --noconfirm
 
-mv -f /home/${username}/Dot-Files/.local/share/applications/spotify-adblock.desktop /home/${username}/.local/share/applications/
+mv -f /home/${username}/Dot-Files-Rouge/.local/share/applications/spotify-adblock.desktop /home/${username}/.local/share/applications/
 
 cd
 
-# 9.1 open spotify once before installing spicetify
+# Open spotify once before installing spicetify
 
 echo Before proceeding, open spotify once and login, close it and type done once you are ready
 
@@ -99,7 +99,7 @@ while true; do
 done
 
 
-# 10. install spicetify 
+# Install spicetify 
 
 yay -S spicetify-cli --noconfirm
 
@@ -111,7 +111,7 @@ spicetify
 
 spicetify backup apply enable-devtools
 
-# 10.1 install spotifyNoPremium theme for spicetify
+# Install spotifyNoPremium theme for spicetify
 
 cd
 
@@ -129,9 +129,9 @@ spicetify config extensions adblock.js
 
 spicetify apply
 
-# 10.2 add custom theme files to spicetify
+# Add custom theme files to spicetify
 
-cd /home/${username}/Dot-Files/home/user/.config/spicetify/Themes/SpotifyNoPremium
+cd /home/${username}/Dot-Files-Rouge/home/user/.config/spicetify/Themes/SpotifyNoPremium
 
 mv -f color.ini /home/${username}/.config/spicetify/Themes/SpotifyNoPremium/
 
