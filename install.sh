@@ -18,6 +18,14 @@ cd
 
 yay -S java-environment-common java-runtime-common --noconfirm
 
+# 0.2 install google chrome
+
+yay -S google-chrome --noconfirm
+
+# 0.3 install github-desktop-bin
+
+yay -S github-desktop-bin --noconfirm
+
 # 1. install VSCode
 
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
