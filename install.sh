@@ -52,7 +52,7 @@ konsave -a rouge
 
 yay -S papirus-icon-theme --noconfirm
 
-yay -S papirus-folders --noconfirm
+yay -S papirus-folders-git --noconfirm
 
 papirus-folders -C bluegrey --theme ePapirus-Dark
 
