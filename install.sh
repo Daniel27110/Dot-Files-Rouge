@@ -12,17 +12,16 @@
 
 # 5. Enjoy your new system!
 
+# find out the username
+
 username=$(whoami)
 
 cd
 
 # Install Java
 
-yay -S java-environment-common java-runtime-common --noconfirm
+yay -S java-environment-common java-runtime-common jdk-openjdk --noconfirm
 
-# Install google chrome
-
-yay -S google-chrome --noconfirm
 
 # Install github-desktop-bin
 
