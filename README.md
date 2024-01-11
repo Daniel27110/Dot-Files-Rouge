@@ -43,4 +43,6 @@ I aim to produce a practical work environment that will hopefully complement the
 ![3](https://user-images.githubusercontent.com/98629277/233811238-9fbef451-42c7-477f-8f78-1177934a7e49.png)
 
 
+### Archive and continuation:
 
+Throughout years of experimentation with Linux, various distributions, and desktop environments, this repository's commit history has become extremely bloated, resulting in an unnecessarily large installation size. For this reason, this repository will be archived, and all future activities for my Linux dot files will continue on this [new repository](https://github.com/Daniel27110/Linux-Dot-Files).
